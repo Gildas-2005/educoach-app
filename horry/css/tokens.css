@@ -1,0 +1,124 @@
+/* ==========================================================================
+   Design tokens — palette reprise de lib/core/theme/app_theme.dart
+   ========================================================================== */
+:root {
+  /* Couleurs de marque (identiques au thème Flutter) */
+  --primary: #3f51b5;
+  --primary-600: #3949a3;
+  --primary-dark: #1a237e;
+  --secondary: #00bcd4;
+  --accent: #7c4dff;
+  --success: #2e7d32;
+  --warning: #f9a825;
+  --danger: #c62828;
+
+  /* Surfaces (thème clair) */
+  --bg: #f6f7fb;
+  --bg-soft: #eef0f9;
+  --surface: #ffffff;
+  --surface-2: #ffffff;
+  --surface-glass: rgba(255, 255, 255, 0.72);
+  --surface-sunken: #f2f4fb;
+  --border: rgba(26, 35, 126, 0.10);
+  --border-strong: rgba(26, 35, 126, 0.20);
+
+  /* Texte */
+  --text: #141a33;
+  --text-soft: #4a5372;
+  --text-muted: #7b83a2;
+  --on-primary: #ffffff;
+
+  /* Dégradés */
+  --hero: linear-gradient(135deg, #3f51b5 0%, #7c4dff 100%);
+  --hero-soft: linear-gradient(135deg, rgba(63, 81, 181, .12), rgba(124, 77, 255, .12));
+  --mesh: radial-gradient(1200px 600px at 15% -10%, rgba(124, 77, 255, .22), transparent 60%),
+          radial-gradient(900px 500px at 90% 0%, rgba(0, 188, 212, .18), transparent 55%),
+          radial-gradient(700px 500px at 60% 110%, rgba(63, 81, 181, .16), transparent 60%);
+
+  /* Ombres */
+  --shadow-xs: 0 1px 2px rgba(20, 26, 51, .06);
+  --shadow-sm: 0 2px 8px rgba(20, 26, 51, .06), 0 1px 2px rgba(20, 26, 51, .04);
+  --shadow-md: 0 10px 30px -12px rgba(26, 35, 126, .28);
+  --shadow-lg: 0 24px 60px -24px rgba(26, 35, 126, .35);
+  --shadow-glow: 0 18px 40px -18px rgba(124, 77, 255, .55);
+
+  /* Rayons */
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r-md: 16px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-full: 999px;
+
+  /* Espacements */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-7: 32px;
+  --s-8: 40px;
+  --s-9: 56px;
+
+  /* Typographie */
+  --font: "Inter", "Segoe UI", "Roboto", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", ui-monospace, "Cascadia Code", Consolas, monospace;
+  --fs-xs: 11.5px;
+  --fs-sm: 13px;
+  --fs-md: 14.5px;
+  --fs-lg: 16.5px;
+  --fs-xl: 20px;
+  --fs-2xl: 26px;
+  --fs-3xl: 34px;
+  --fs-display: clamp(38px, 6vw, 64px);
+
+  /* Mouvement */
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --dur-1: 140ms;
+  --dur-2: 240ms;
+  --dur-3: 420ms;
+  --dur-4: 700ms;
+
+  /* Gabarit */
+  --shell-max: 1180px;
+  --tabbar-h: 68px;
+  --radius-card: var(--r-lg);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #0b0e1a;
+  --bg-soft: #111527;
+  --surface: #151a2e;
+  --surface-2: #1a2038;
+  --surface-glass: rgba(21, 26, 46, 0.72);
+  --surface-sunken: #10152a;
+  --border: rgba(255, 255, 255, .09);
+  --border-strong: rgba(255, 255, 255, .18);
+
+  --text: #eef1ff;
+  --text-soft: #b7bedd;
+  --text-muted: #8e97ba;
+
+  --primary: #8c9bff;
+  --primary-600: #7b8bf5;
+  --secondary: #4dd8ec;
+  --accent: #b18cff;
+  --success: #6ede8a;
+  --warning: #ffd469;
+  --danger: #ff8b8b;
+
+  --hero: linear-gradient(135deg, #2b3577 0%, #5c3ba8 100%);
+  --hero-soft: linear-gradient(135deg, rgba(140, 155, 255, .16), rgba(177, 140, 255, .14));
+  --mesh: radial-gradient(1200px 600px at 15% -10%, rgba(124, 77, 255, .30), transparent 60%),
+          radial-gradient(900px 500px at 90% 0%, rgba(0, 188, 212, .18), transparent 55%),
+          radial-gradient(700px 500px at 60% 110%, rgba(63, 81, 181, .24), transparent 60%);
+
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, .35);
+  --shadow-md: 0 14px 36px -14px rgba(0, 0, 0, .65);
+  --shadow-lg: 0 28px 70px -26px rgba(0, 0, 0, .75);
+  --shadow-glow: 0 18px 46px -16px rgba(124, 77, 255, .55);
+  color-scheme: dark;
+}

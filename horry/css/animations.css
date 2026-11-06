@@ -1,0 +1,144 @@
+/* ==========================================================================
+   Animations — keyframes + classes utilitaires
+   ========================================================================== */
+@keyframes blob-float {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(4vw, 3vh, 0) scale(1.08); }
+  100% { transform: translate3d(-3vw, -2vh, 0) scale(.96); }
+}
+@keyframes float-slow {
+  from { transform: translate3d(0, 0, 0) rotate(0deg); }
+  to   { transform: translate3d(-24px, 26px, 0) rotate(12deg); }
+}
+@keyframes pop-in {
+  0%   { opacity: 0; transform: scale(.7) translateY(14px); }
+  60%  { opacity: 1; transform: scale(1.04) translateY(0); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes splash-load {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(320%); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes bar-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes pill-in { from { opacity: 0; transform: scaleX(.3); } to { opacity: 1; transform: scaleX(1); } }
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(14px) scale(.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes toast-out {
+  to { opacity: 0; transform: translateY(10px) scale(.97); }
+}
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(22px) scale(.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes shimmer { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+@keyframes confetti-fall {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 1; }
+  100% { transform: translate3d(var(--dx, 0px), 105vh, 0) rotate(var(--rot, 540deg)); opacity: .9; }
+}
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--primary) 45%, transparent); }
+  70%  { box-shadow: 0 0 0 16px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+@keyframes flame {
+  0%, 100% { transform: scale(1) rotate(-2deg); }
+  50%      { transform: scale(1.12) rotate(2deg); }
+}
+@keyframes typing {
+  0%, 60%, 100% { transform: translateY(0); opacity: .45; }
+  30%           { transform: translateY(-4px); opacity: 1; }
+}
+@keyframes sheen {
+  0%   { transform: translateX(-140%) skewX(-18deg); }
+  100% { transform: translateX(240%) skewX(-18deg); }
+}
+@keyframes xp-burst {
+  0%   { opacity: 0; transform: translateY(6px) scale(.8); }
+  35%  { opacity: 1; transform: translateY(-8px) scale(1.06); }
+  100% { opacity: 0; transform: translateY(-34px) scale(.94); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%      { transform: translateX(-6px); }
+  40%      { transform: translateX(6px); }
+  60%      { transform: translateX(-4px); }
+  80%      { transform: translateX(3px); }
+}
+@keyframes draw-check {
+  from { stroke-dashoffset: 34; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-8px); max-height: 0; }
+  to   { opacity: 1; transform: translateY(0); max-height: 640px; }
+}
+
+/* ------------------------------------------------------- Transitions de page */
+.view { animation: view-in .42s var(--ease) both; }
+@keyframes view-in {
+  from { opacity: 0; transform: translateY(14px) scale(.995); }
+  to   { opacity: 1; transform: none; }
+}
+.view--out { animation: view-out .18s var(--ease) forwards; }
+@keyframes view-out {
+  to { opacity: 0; transform: translateY(-8px) scale(.995); }
+}
+
+/* Apparition au défilement : .reveal devient visible via IntersectionObserver */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+.reveal.is-in { opacity: 1; transform: none; }
+
+/* Cascade : chaque enfant apparaît avec un décalage */
+.stagger > * { animation: reveal-up .55s var(--ease) both; }
+.stagger > *:nth-child(1) { animation-delay: .02s; }
+.stagger > *:nth-child(2) { animation-delay: .07s; }
+.stagger > *:nth-child(3) { animation-delay: .12s; }
+.stagger > *:nth-child(4) { animation-delay: .17s; }
+.stagger > *:nth-child(5) { animation-delay: .22s; }
+.stagger > *:nth-child(6) { animation-delay: .27s; }
+.stagger > *:nth-child(7) { animation-delay: .32s; }
+.stagger > *:nth-child(8) { animation-delay: .37s; }
+.stagger > *:nth-child(n+9) { animation-delay: .42s; }
+
+.is-shaking { animation: shake .4s var(--ease); }
+.is-pulsing { animation: pulse-ring 2s var(--ease) infinite; }
+.flame { animation: flame 2.4s var(--ease) infinite; transform-origin: 50% 80%; }
+
+/* Bandeau lumineux qui traverse une carte */
+.sheen { position: relative; overflow: hidden; }
+.sheen::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .35), transparent);
+  animation: sheen 3.4s var(--ease) infinite; animation-delay: 1.2s;
+  pointer-events: none;
+}
+
+/* Indicateur de frappe */
+.typing { display: inline-flex; gap: 4px; align-items: center; }
+.typing i { width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted); animation: typing 1.2s var(--ease) infinite; }
+.typing i:nth-child(2) { animation-delay: .15s; }
+.typing i:nth-child(3) { animation-delay: .3s; }
+
+/* Gain d'XP flottant */
+.xp-float {
+  position: fixed; z-index: 130; font-weight: 800; color: var(--success);
+  pointer-events: none; animation: xp-burst 1.3s var(--ease) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}

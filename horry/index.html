@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#3f51b5" />
+  <meta name="description" content="Educoach — compagnon de cours universitaires : parcours animés, planning, notes, messagerie et abonnements." />
+  <title>Educoach — apprends plus vite</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/screens.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <!-- Fond animé : dégradé « aurore » + halo qui suit le pointeur -->
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora__blob aurora__blob--1"></span>
+    <span class="aurora__blob aurora__blob--2"></span>
+    <span class="aurora__blob aurora__blob--3"></span>
+    <span class="aurora__grain"></span>
+  </div>
+
+  <!-- Écran de démarrage -->
+  <div id="splash" class="splash" aria-hidden="true">
+    <div class="splash__logo">
+      <svg viewBox="0 0 48 48" width="56" height="56" aria-hidden="true">
+        <defs>
+          <linearGradient id="sp" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3f51b5" /><stop offset="1" stop-color="#7c4dff" />
+          </linearGradient>
+        </defs>
+        <rect x="3" y="3" width="42" height="42" rx="13" fill="url(#sp)" />
+        <path d="M15 31V19.5L24 15l9 4.5V31" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M15 19.5 24 24l9-4.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".7" />
+        <circle cx="24" cy="34" r="2.4" fill="#fff" />
+      </svg>
+    </div>
+    <p class="splash__text">Educoach</p>
+    <div class="splash__bar"><span></span></div>
+  </div>
+
+  <main id="main" class="app" role="main"></main>
+  <nav id="tabbar" class="tabbar" aria-label="Navigation principale" hidden></nav>
+
+  <div id="toasts" class="toasts" aria-live="polite" aria-atomic="false"></div>
+  <div id="modal-root" class="modal-root" hidden></div>
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
