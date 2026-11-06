@@ -8,6 +8,7 @@ import 'core/session/legal_store.dart';
 import 'core/session/locale_store.dart';
 import 'core/session/session_store.dart';
 import 'core/session/theme_store.dart';
+import 'core/supabase/supabase_env.dart';
 import 'core/theme/app_theme.dart';
 import 'features/auth/login_page.dart';
 import 'features/auth/signup_page.dart';
@@ -22,7 +23,11 @@ import 'features/shell/shell_page.dart';
 import 'features/subscription/subscription_page.dart';
 import 'features/teacher/teacher_shell_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Initialise Supabase uniquement si la config est fournie (--dart-define).
+  // Sinon, repli transparent sur le mode démonstration hors-ligne existant.
+  await SupabaseEnv.initialize();
   runApp(const EducoachApp());
 }
 
