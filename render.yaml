@@ -1,0 +1,40 @@
+# ============================================================================
+# Render Blueprint — Educoach
+# Une fois ce repo connecté à Render (Dashboard → New → Blueprint), Render lit
+# ce fichier et provisionne le service. Alternative : clé API Render, je crée le
+# service via l'API.
+#
+# NB : --dart-define (clés Supabase) est compile-time. Pour les injecter au
+# build Docker sur Render, déclarer SUPABASE_URL / SUPABASE_ANON_KEY comme
+# "Build Environment Variables" (Render expose l'env pendant la build si
+# déclarées), sinon le site se build en repli hors-ligne (démo) — sans danger.
+# ============================================================================
+
+services:
+  - type: web
+    name: educoach
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    branch: main
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: APP_ENV
+        value: production
+      # Renseignés plus tard pour la build prod connectée :
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+
+# ---------------------------------------------------------------------------
+# Option B — si Render héberge AUSSI la base (au lieu de Supabase) :
+# décommenter pour provisionner un Postgres managé Render, puis une API Node.
+# ---------------------------------------------------------------------------
+# databases:
+#   - name: educoach-db
+#     databaseName: educoach
+#     databaseType: pserv
+#     plan: free
+#     ipAllowList: []
