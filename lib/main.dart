@@ -8,7 +8,7 @@ import 'core/session/legal_store.dart';
 import 'core/session/locale_store.dart';
 import 'core/session/session_store.dart';
 import 'core/session/theme_store.dart';
-import 'core/supabase/supabase_env.dart';
+import 'core/config/app_config.dart';
 import 'core/theme/app_theme.dart';
 import 'features/auth/login_page.dart';
 import 'features/auth/signup_page.dart';
@@ -25,9 +25,9 @@ import 'features/teacher/teacher_shell_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // Initialise Supabase uniquement si la config est fournie (--dart-define).
-  // Sinon, repli transparent sur le mode démonstration hors-ligne existant.
-  await SupabaseEnv.initialize();
+  // Config serveur (API REST Render) injectée au build via --dart-define.
+  // Sans API_BASE_URL, l'application reste en mode démonstration hors-ligne.
+  AppConfig.load();
   runApp(const EducoachApp());
 }
 
